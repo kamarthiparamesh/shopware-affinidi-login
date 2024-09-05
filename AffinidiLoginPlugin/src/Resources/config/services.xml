@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/services
+            http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="AffinidiLoginPlugin\Service\AffinidiService">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <argument type="service" id="Shopware\Core\Checkout\Customer\SalesChannel\AccountService"/>
+        </service>
+        <service id="AffinidiLoginPlugin\Subscriber\StorefrontSubscriber"
+                 public="true">
+            <argument type="service" id="event_dispatcher" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+        <service id="AffinidiLoginPlugin\Controller\AffinidiLoginController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <call method="setTwig">
+                <argument type="service" id="twig"/>
+            </call>
+            <argument type="service" id="Shopware\Storefront\Page\GenericPageLoader"/>
+            <argument type="service" id="AffinidiLoginPlugin\Service\AffinidiService" />
+        </service>
+    </services>
+</container>

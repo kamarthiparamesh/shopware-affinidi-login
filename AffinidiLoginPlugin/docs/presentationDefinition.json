@@ -1,0 +1,106 @@
+{
+  "id": "profile_data",
+  "submission_requirements": [
+    {
+      "rule": "pick",
+      "min": 1,
+      "from": "A"
+    }
+  ],
+  "input_descriptors": [
+    {
+      "id": "profile_vc",
+      "name": "Profile VC",
+      "purpose": "Get some profile data",
+      "group": [
+        "A"
+      ],
+      "constraints": {
+        "fields": [
+          {
+            "path": [
+              "$.@context"
+            ],
+            "purpose": "Verify VC Context",
+            "filter": {
+              "type": "array",
+              "contains": {
+                "type": "string",
+                "pattern": "^https://schema.affinidi.io/profile-template/context.jsonld$"
+              }
+            }
+          },
+          {
+            "path": [
+              "$.type"
+            ],
+            "purpose": "Verify VC Type",
+            "filter": {
+              "type": "array",
+              "contains": {
+                "type": "string",
+                "pattern": "^ProfileTemplate$"
+              }
+            }
+          },
+          {
+            "path": [
+              "$.credentialSubject.person.givenName"
+            ],
+            "purpose": "Require first name"
+          },
+          {
+            "path": [
+              "$.credentialSubject.person.familyName"
+            ],
+            "purpose": "Require last name"
+          }
+        ]
+      }
+    },
+    {
+      "id": "email_vc",
+      "name": "Email VC",
+      "purpose": "Check if VC data contains necessary fields",
+      "group": [
+        "A"
+      ],
+      "constraints": {
+        "fields": [
+          {
+            "path": [
+              "$.type"
+            ],
+            "purpose": "Check if VC type is correct",
+            "filter": {
+              "type": "array",
+              "contains": {
+                "type": "string",
+                "pattern": "Email"
+              }
+            }
+          },
+          {
+            "path": [
+              "$.credentialSubject.email"
+            ],
+            "purpose": "Check if VC contains email field",
+            "filter": {
+              "type": "string"
+            }
+          },
+          {
+            "path": [
+              "$.issuer"
+            ],
+            "purpose": "Check if VC Issuer is Trusted",
+            "filter": {
+              "type": "string",
+              "pattern": "^did:key:zQ3shtMGCU89kb2RMknNZcYGUcHW8P6Cq3CoQyvoDs7Qqh33N|^did:elem:EiBb5gyC1mu3t31oYwMsYWg1U2HyNtaVQ0NKn5UkAzB8BQ"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+[
+    {
+        "sourceField": "$.credentialSubject.email",
+        "idTokenClaim": "email"
+    },
+    {
+        "sourceField": "$.issuer",
+        "idTokenClaim": "issuer"
+    },
+    {
+        "sourceField": "$.credentialSubject.phoneNumber",
+        "idTokenClaim": "phoneNumber"
+    },
+    {
+        "sourceField": "$.credentialSubject.givenName",
+        "idTokenClaim": "givenName"
+    },
+    {
+        "sourceField": "$.credentialSubject.familyName",
+        "idTokenClaim": "familyName"
+    },
+    {
+        "sourceField": "$.credentialSubject.nickname",
+        "idTokenClaim": "nickname"
+    },
+    {
+        "sourceField": "$.credentialSubject.middleName",
+        "idTokenClaim": "middleName"
+    },
+    {
+        "sourceField": "$.credentialSubject.birthdate",
+        "idTokenClaim": "birthdate"
+    },
+    {
+        "sourceField": "$.credentialSubject.gender",
+        "idTokenClaim": "gender"
+    },
+    {
+        "sourceField": "$.credentialSubject.picture",
+        "idTokenClaim": "picture"
+    },
+    {
+        "sourceField": "$.credentialSubject.formatted",
+        "idTokenClaim": "formatted"
+    },
+    {
+        "sourceField": "$.credentialSubject.locality",
+        "idTokenClaim": "locality"
+    },
+    {
+        "sourceField": "$.credentialSubject.postalCode",
+        "idTokenClaim": "postalCode"
+    },
+    {
+        "sourceField": "$.credentialSubject.country",
+        "idTokenClaim": "country"
+    },
+    {
+        "sourceField": "$.credentialSubject.livenessCheckPassed",
+        "idTokenClaim": "livenessCheckPassed"
+    }
+]

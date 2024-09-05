@@ -1,0 +1,45 @@
+{
+  "name": "affinidi/laravel-hybridauth-affinidi",
+  "description": "Affinidi (affinidi.com) OIDC Provider for Hybridauth.",
+  "keywords": [
+    "affinidi",
+    "laravel",
+    "oauth",
+    "provider",
+    "hybridauth",
+    "affinidi login",
+    "OIDC",
+    "OID4VP"
+  ],
+  "homepage": "https://affinidi.com",
+  "support": {
+    "issues": "https://github.com/affinidi/laravel-hybridauth-affinidi/issues",
+    "source": "https://github.com/affinidi/laravel-hybridauth-affinidi"
+  },
+  "require": {
+    "php": "^8.0",
+    "hybridauth/hybridauth": "~3.0"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Affinidi\\HybridauthProvider\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Paramesh Kamarthi",
+      "email": "paramesh.k@affinidi.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "scripts": {
+    "build": [
+      "@composer --no-plugins --no-interaction install --no-scripts --no-dev",
+      "@composer --no-plugins --no-interaction archive"
+    ]
+  },
+  "scripts-descriptions": {
+    "build": "Build project artifact."
+  }
+}

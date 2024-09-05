@@ -1,0 +1,22 @@
+{
+    "name": "paramesh/affinidi-login-plugin",
+    "description": "A Shopware plugin to add a affinidi login integration",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "AffinidiLoginPlugin\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "AffinidiLoginPlugin\\AffinidiLoginPlugin",
+        "label": {
+            "en-GB": "Affinidi Login Plugin"
+        },
+        "service": "Resources/config/services.xml"
+    },
+    "require": {
+        "affinidi/laravel-hybridauth-affinidi": "^1.0",
+        "hybridauth/hybridauth": "^3.0"
+    }
+}
