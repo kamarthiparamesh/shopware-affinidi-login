@@ -5,4 +5,7 @@
     <version>1.0.0</version>
     <author>Paramesh Kamarthi</author>
     <license>MIT</license>
+    <description lang="en">
+        Affinidi Login - Passwordless Authentication provides an alternative way to securely authenticate to Shopware Stores using Affinidi Vault as the identity provider managed by the end-user. It integrates with Affinidi Login to enable passwordless login for a seamless user experience.
+    </description>
 </plugin>

@@ -11,29 +11,59 @@ use Shopware\Core\Checkout\Customer\CustomerEntity;
 use Affinidi\HybridauthProvider\AffinidiProvider;
 use Shopware\Core\Checkout\Customer\SalesChannel\AccountService;
 use Shopware\Core\System\SalesChannel\ContextTokenResponse;
+use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 class AffinidiService
 {
     private $container;
     private $adapter;
     private $accountService;
+    private SystemConfigService $systemConfigService;
 
     public function setContainer($container)
     {
         $this->container = $container;
     }
 
-    public function __construct(AccountService $accountService)
+    public function __construct(AccountService $accountService, SystemConfigService $systemConfigService)
     {
         $this->accountService = $accountService;
+        $this->systemConfigService = $systemConfigService;
+        $config = $this->getConfig();
+        $this->adapter = new AffinidiProvider($config);
 
-        $config = include __DIR__ . '/../Resources/config/hybridauth.php';
-        $this->adapter = new AffinidiProvider($config["affinidi"]);
+    }
+
+    private function getConfig()
+    {
+        // Reading from hybridauth config file
+        // $config = include __DIR__ . '/../Resources/config/hybridauth.php';
+        // $config = $config["affinidi"]
+
+        //$allPluginConfig = $this->systemConfigService->all();
+        $issuer = $this->systemConfigService->get('AffinidiLoginPlugin.config.AffinidiIssuer');
+        $config = [
+            'callback' => $this->systemConfigService->get('core.app.shopId.app_url') . '/affinidi/callback',
+            'keys' => [
+                'id' => $this->systemConfigService->get('AffinidiLoginPlugin.config.AffinidiClientID'),
+                'secret' => $this->systemConfigService->get('AffinidiLoginPlugin.config.AffinidiClientSecret')
+            ],
+            'endpoints' => [
+                'api_base_url' => $issuer,
+                'authorize_url' => $issuer . '/oauth2/auth',
+                'access_token_url' => $issuer . '/oauth2/token',
+            ]
+        ];
+
+        //dd($config);
+
+        return $config;
 
     }
 
     public function loginAndRegister($context)
     {
+
         //Customer already logged in
         $customer = $context->getCustomer();
         if ($customer) {
@@ -143,11 +173,10 @@ class AffinidiService
 
     private function getCustomerGroupId(Context $context): string
     {
-        $groupName = 'affinidi customer';
-        // Fetch a default customer group as a fallback
+        $groupName = 'affinidi';
         $customerGroupRepository = $this->container->get('customer_group.repository');
         $criteria = new Criteria();
-        $criteria->addFilter(new EqualsFilter('name', $groupName)); // or use some other identifier
+        $criteria->addFilter(new EqualsFilter('name', $groupName));
         $customerGroup = $customerGroupRepository->search($criteria, $context)->first();
 
         if ($customerGroup === null) {

@@ -1,6 +1,10 @@
 # Affinidi Login Plugin for Shopware
 
-This contains the shopware plugin which integrates affinidi login into your shopware application
+Affinidi Login - Passwordless Authentication provides an alternative way to securely authenticate to Shopware Stores using Affinidi Vault as the identity provider managed by the end-user. It integrates with Affinidi Login to enable passwordless login for a seamless user experience.
+
+Explore how Holistic Identity and the Affinidi Trust Network enable developers to create privacy-preserving applications and empower consumers to control and manage their data. Learn more about [here](https://docs.affinidi.com/docs)
+
+This plugin uses [laravel-socialite-affinidi](https://packagist.org/packages/affinidi/laravel-socialite-affinidi) for implementing OAuth2 as `Affinidi Provider`, which internally using `hybridauth/hybridauth` package.
 
 ## Setup Shopware
 
@@ -12,9 +16,10 @@ docker-compose up -d
 
 2. Check Shopware Admin
    Open http://localhost/admin in your browser after the installation has finished. You should see the Shopware admin interface.
+
    The default credentials are:
-   User: admin
-   Password: shopware
+   User: `admin`
+   Password: `shopware`
 
 3. Check Shopware Store
    Open http://localhost/ in your browser, You should see the Shopware store with some default products.
@@ -37,11 +42,11 @@ You zip the directory `AffinidiLoginPlugin` and upload it in shopware admin port
 docker cp ./AffinidiLoginPlugin shopware:/var/www/html/custom/plugins/.
 ```
 
-3. Post that open the Admin Portal and then install, activate the plugin 
+3. Post that open the Admin Portal and then install, activate the plugin
 
 ### Handy commands (for my development)
 
-- Remove plugin, need to run this command inside the constainer 
+- Remove plugin, need to run this command inside the container
 
 ```
 sudo rm -rf custom/plugins/AffinidiLoginPlugin
@@ -54,5 +59,15 @@ php bin/console cache:clear
 php bin/console plugin:refresh
 php bin/console theme:compile
 php bin/console plugin:install --activate AffinidiLoginPlugin
+php bin/console plugin:uninstall AffinidiLoginPlugin --keep-user-data false
 php bin/console debug:router
+```
+
+-- Copy plugin or shopware Code to local
+
+```
+mkdir temp
+docker cp shopware:/var/www/html/custom/plugins/AffinidiLoginPlugin ./temp/.
+
+docker cp shopware:/var/www/html/vendor/shopware ./temp/.
 ```
