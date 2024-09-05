@@ -2,9 +2,11 @@
 
 Affinidi Login - Passwordless Authentication provides an alternative way to securely authenticate to Shopware Stores using Affinidi Vault as the identity provider managed by the end-user. It integrates with Affinidi Login to enable passwordless login for a seamless user experience.
 
-Explore how Holistic Identity and the Affinidi Trust Network enable developers to create privacy-preserving applications and empower consumers to control and manage their data. Learn more about [here](https://docs.affinidi.com/docs)
+Explore our [documentation](https://docs.affinidi.com/docs) on how Holistic Identity and the Affinidi Trust Network enable developers to create privacy-preserving applications and empower consumers to control and manage their data. 
 
 This plugin uses [laravel-socialite-affinidi](https://packagist.org/packages/affinidi/laravel-socialite-affinidi) for implementing OAuth2 as `Affinidi Provider`, which internally using `hybridauth/hybridauth` package.
+
+**Note**: This is POC, not to be used in production
 
 ## Setup Shopware
 
