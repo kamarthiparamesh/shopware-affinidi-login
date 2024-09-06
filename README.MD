@@ -26,7 +26,7 @@ docker-compose up -d
 3. Check Shopware Store
    Open http://localhost/ in your browser, You should see the Shopware store with some default products.
 
-4. If you want sync shopware source code from the container
+4. (Optional) If you want sync shopware source code from the container
 
 ```
 docker cp shopware:/var/www/html/. ./src
@@ -34,34 +34,48 @@ docker cp shopware:/var/www/html/. ./src
 
 ## Install Affinidi Login Plugin
 
-1. Option 1 : Using Shopware Admin Portal
+1. **Option 1** : Zip the directory `AffinidiLoginPlugin` and upload it in [Shopware Admin Portal](http://localhost/admin) `Extensions -> My extensions -> Upload extension`
 
-You zip the directory `AffinidiLoginPlugin` and upload it in shopware admin portal `Extensions -> My extensions -> Upload extension`
-
-2. Option 2 : Copy the plugin from local to plugins directory of shopware code running inside a container
+2. **Option 2** : Copy the plugin from local to plugins directory of shopware code running inside a container using below command
 
 ```
 docker cp ./AffinidiLoginPlugin shopware:/var/www/html/custom/plugins/.
 ```
 
-3. Post that open the Admin Portal and then install, activate the plugin
+3. Post that open the [Shopware Admin Portal](http://localhost/admin) and then install, activate the plugin
+   ![alt text](./AffinidiLoginPlugin/docs/images/install-plugin.png)
 
 ## Set up your Affinidi Login configuration
 
-1. Follow [this link](https://docs.affinidi.com/docs/affinidi-login/login-configuration/#using-affinidi-portal) to set up your login configuration with below details
+1. Follow [this link](https://docs.affinidi.com/docs/affinidi-login/login-configuration/#using-affinidi-portal) to create your Affinidi login configuration with below details
 
    - `Name` as your Shopware store name e.g. `Shopware Store`
    - `Redirect URIs` as `http://localhost/affinidi/callback` (replace localhost with your domain name)
-   - To request the user’s email address & address, Use the below **Presentation Definition** (presentationDefinition) and **ID Token Mapping** (idTokenMapping)
+   - To request the user’s email, name & address, Use the below **Presentation Definition** (presentationDefinition) and **ID Token Mapping** (idTokenMapping)
      - `presentationDefinition` - Replace the content from [here](./AffinidiLoginPlugin/docs/presentationDefinition.json)
-     - `idTokenMapping` - Replace the content from [here](./AffinidiLoginPlugin/docs/IDtokenMapping.json)
+     - `idTokenMapping` - Replace the content from [here](./AffinidiLoginPlugin/docs/idTokenMapping.json)
 
 2. Copy your **Client ID**, **Client Secret** and **Issuer** from your login configuration
 
 3. Update Login Configuration with above values by navigating to [Shopware Admin Portal](http://localhost/admin) > Extensions > My extensions > Configure Affinidi Login Plugin
    ![alt text](./AffinidiLoginPlugin/docs/images/update-login-config.png)
 
+# Few Screenshots for Login Flow
 
+Shopware Store Landing Page:
+![alt text](./AffinidiLoginPlugin/docs/images/store-home-page.png)
+
+Shopware Store Login Page:
+![alt text](./AffinidiLoginPlugin/docs/images/store-login-page.png)
+
+Affinidi Vault Consent Page during Affinidi Login Flow:
+![alt text](./AffinidiLoginPlugin/docs/images/consent-screen.png)
+
+Shopware Store Accounts Page post Login:
+![alt text](./AffinidiLoginPlugin/docs/images/post-login-page.png)
+
+Shopware Admin Portal Customer List Page:
+![alt text](./AffinidiLoginPlugin/docs/images/admin-portal-customer-list.png)
 
 ### Handy commands (for my development)
 
