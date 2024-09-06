@@ -2,7 +2,7 @@
 
 Affinidi Login - Passwordless Authentication provides an alternative way to securely authenticate to Shopware Stores using Affinidi Vault as the identity provider managed by the end-user. It integrates with Affinidi Login to enable passwordless login for a seamless user experience.
 
-Explore our [documentation](https://docs.affinidi.com/docs) on how Holistic Identity and the Affinidi Trust Network enable developers to create privacy-preserving applications and empower consumers to control and manage their data. 
+Explore our [documentation](https://docs.affinidi.com/docs) on how Holistic Identity and the Affinidi Trust Network enable developers to create privacy-preserving applications and empower consumers to control and manage their data.
 
 This plugin uses [laravel-socialite-affinidi](https://packagist.org/packages/affinidi/laravel-socialite-affinidi) for implementing OAuth2 as `Affinidi Provider`, which internally using `hybridauth/hybridauth` package.
 
@@ -45,6 +45,23 @@ docker cp ./AffinidiLoginPlugin shopware:/var/www/html/custom/plugins/.
 ```
 
 3. Post that open the Admin Portal and then install, activate the plugin
+
+## Set up your Affinidi Login configuration
+
+1. Follow [this link](https://docs.affinidi.com/docs/affinidi-login/login-configuration/#using-affinidi-portal) to set up your login configuration with below details
+
+   - `Name` as your Shopware store name e.g. `Shopware Store`
+   - `Redirect URIs` as `http://localhost/affinidi/callback` (replace localhost with your domain name)
+   - To request the user’s email address & address, Use the below **Presentation Definition** (presentationDefinition) and **ID Token Mapping** (idTokenMapping)
+     - `presentationDefinition` - Replace the content from [here](./AffinidiLoginPlugin/docs/presentationDefinition.json)
+     - `idTokenMapping` - Replace the content from [here](./AffinidiLoginPlugin/docs/IDtokenMapping.json)
+
+2. Copy your **Client ID**, **Client Secret** and **Issuer** from your login configuration
+
+3. Update Login Configuration with above values by navigating to [Shopware Admin Portal](http://localhost/admin) > Extensions > My extensions > Configure Affinidi Login Plugin
+   ![alt text](./AffinidiLoginPlugin/docs/images/update-login-config.png)
+
+
 
 ### Handy commands (for my development)
 

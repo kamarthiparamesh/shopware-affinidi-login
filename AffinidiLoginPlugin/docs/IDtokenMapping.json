@@ -13,5 +13,25 @@
       "sourceField": "$.credentialSubject.person.familyName",
       "idTokenClaim": "$.custom[2].familyName",
       "inputDescriptorId": "profile_vc"
+    },
+    {
+      "sourceField": "$.credentialSubject.person.addresses[0].streetAddress",
+      "idTokenClaim": "$.custom[3].formatted",
+      "inputDescriptorId": "profile_vc"
+    },
+    {
+      "sourceField": "$.credentialSubject.person.addresses[0].addressLocality",
+      "idTokenClaim": "$.custom[4].locality",
+      "inputDescriptorId": "profile_vc"
+    },
+    {
+      "sourceField": "$.credentialSubject.person.addresses[0].postalCode",
+      "idTokenClaim": "$.custom[5].postalCode",
+      "inputDescriptorId": "profile_vc"
+    },
+    {
+      "sourceField": "$.credentialSubject.person.addresses[0].addressCountry",
+      "idTokenClaim": "$.custom[6].country",
+      "inputDescriptorId": "profile_vc"
     }
   ]

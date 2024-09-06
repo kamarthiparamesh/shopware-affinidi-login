@@ -45,6 +45,12 @@
           },
           {
             "path": [
+              "$.credentialSubject.person.email"
+            ],
+            "purpose": "Require email"
+          },
+          {
+            "path": [
               "$.credentialSubject.person.givenName"
             ],
             "purpose": "Require first name"
@@ -54,6 +60,30 @@
               "$.credentialSubject.person.familyName"
             ],
             "purpose": "Require last name"
+          },
+          {
+            "path": [
+              "$.credentialSubject.person.addresses[0].streetAddress"
+            ],
+            "purpose": "Require streetAddress"
+          },
+          {
+            "path": [
+              "$.credentialSubject.person.addresses[0].addressLocality"
+            ],
+            "purpose": "Require addressLocality"
+          },
+          {
+            "path": [
+              "$.credentialSubject.person.addresses[0].addressCountry"
+            ],
+            "purpose": "Require addressCountry"
+          },
+          {
+            "path": [
+              "$.credentialSubject.person.addresses[0].postalCode"
+            ],
+            "purpose": "Require postalCode"
           }
         ]
       }
