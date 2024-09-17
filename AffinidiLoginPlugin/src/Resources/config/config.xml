@@ -6,7 +6,7 @@
         <input-field>
             <name>AffinidiClientID</name>
             <label>Affinidi Client ID</label>
-            <defaultValue>54fd053b-2e12-43be-85f6-7d7679dc8377</defaultValue>
+            <defaultValue></defaultValue>
             <placeholder>Your Client ID</placeholder>
             <helpText>Please fill in your Affinidi Client ID from your Affinidi Login Configuration</helpText>
             <!-- <disabled>true</disabled> -->
@@ -14,7 +14,7 @@
         <input-field type="password">
             <name>AffinidiClientSecret</name>
             <label>Affinidi Client Secret</label>
-            <defaultValue>scYAJ2mI4tMrdjINNi7l73hTua</defaultValue>
+            <defaultValue></defaultValue>
             <placeholder>Your Client Secret</placeholder>
             <helpText>Please fill in your Affinidi Client Secret from your Affinidi Login Configuration</helpText>
             <!-- <disabled>true</disabled> -->
@@ -22,7 +22,7 @@
         <input-field>
             <name>AffinidiIssuer</name>
             <label>Affinidi Issuer</label>
-            <defaultValue>https://b3cb1cca-4ffd-4266-9540-289031a1548c.apse1.login.affinidi.io</defaultValue>
+            <defaultValue></defaultValue>
             <placeholder>https://{PROJECT_ID}.apse1.login.affinidi.io</placeholder>
             <helpText>Please fill in your Affinidi Issuer from your Affinidi Login Configuration</helpText>
             <!-- <disabled>true</disabled> -->

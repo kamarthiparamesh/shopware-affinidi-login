@@ -17,13 +17,11 @@ class AffinidiLoginController extends StorefrontController
 {
     private GenericPageLoader $pageLoader;
     private $affinidiService;
-    private $accountService;
 
     public function __construct(GenericPageLoader $pageLoader, AffinidiService $affinidiService)
     {
         $this->pageLoader = $pageLoader;
         $this->affinidiService = $affinidiService;
-        //$this->accountService = $accountService;
     }
 
     #[Route(path: '/affinidi/login', name: 'frontend.affinidi.login', methods: ['GET'])]
